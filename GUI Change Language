@@ -1,0 +1,32 @@
+from googletrans import Translator
+from tkinter import *
+
+def handler_hindi(e):
+    src_data = var.get()  # Get the text entered by the user
+    res = t.translate(src_data, dest='hi')  # 'hi' is the code for Hindi
+    data = res.text
+    lbl_dest.config(text=data)  # Update the existing label with the translated text
+
+root = Tk()
+root.geometry("500x400")
+t = Translator()
+
+# Create a label for input
+lblSrc = Label(root, text="Enter Your Text", font=1)
+lblSrc.grid(row=0, column=0)
+
+# Create a StringVar for the entry
+var = StringVar()
+entr1 = Entry(root, textvariable=var, font=1)
+entr1.grid(row=0, column=1)
+
+# Create a button to convert to Hindi
+btnHi = Button(root, text="Convert to Hindi", font=1)
+btnHi.bind("<Button>", handler_hindi)
+btnHi.grid(row=1, column=1)
+
+# Create a label for the translation result
+lbl_dest = Label(root, text="", font=1)  # Initialize an empty label for the result
+lbl_dest.grid(row=2, column=0, columnspan=2)  # Span across two columns for better placement
+
+root.mainloop()
