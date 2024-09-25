@@ -1,0 +1,16 @@
+from tkinter import*
+def enter_handler(e):   #e is identifier which represent
+    e.widget.config(bg="Orange")
+def leave_handler(e):
+    e.widget.config(bg="Yellow")
+    print(e.x,e.y)
+
+root=Tk()
+root.geometry("500x400")
+for i in range(5):
+    btn1=Button(root,text=f"{(i+1)*100}",font=1,width=5,height=2,fg="Blue",bg="Orange")
+    btn1.bind("<Enter>",enter_handler)
+    btn1.bind("<Leave>",leave_handler)
+    btn1.grid(row=0,column=i)
+
+root.mainloop()
